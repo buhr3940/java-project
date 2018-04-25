@@ -1,6 +1,14 @@
 properties([pipelineTriggers([githubPush()])])
-node('linux') {
-    git url: 'https://github.com/buhr3940/java-project.git', branch: 'master'
-    stage('Test') {
-        sh "env"
-    }
+
+node('linux') {   
+	stage('Test') {    
+		git credentialsId: 'github-credential', url: 'https://github.com/buhr3940/java-project.git'
+		sh 'ant -buildfile test.xml'   
+	}   
+	stage('Build') {    
+		sh 'ant'   
+	}   
+	stage('Results') {    
+		junit 'reports/*.xml'   
+	}
+}
