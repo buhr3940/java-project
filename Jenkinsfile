@@ -1,14 +1,6 @@
 properties([pipelineTriggers([githubPush()])])
-node('java-project') {
-    git url: 'https://github.com/buhr3940/java-project.git', branch: 'master'
+node('linux') {
+    git url: 'https://github.com/buhr3940/infrastructure-pipeline.git', branch: 'master'
     stage('Test') {
-	    sh 'env'
+        sh "env"
     }
-
-stage ('Build') {
-
-    sh 'ant -f build.xml -v'
-
-    }
-
-}
