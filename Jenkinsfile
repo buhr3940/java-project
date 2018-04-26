@@ -1,7 +1,7 @@
 properties([pipelineTriggers([githubPush()])])
 node('linux') {
-    git credentialsId: 'github-credential', url: 'https://github.com/buhr3940/java-project.git'
     stage('Test') {
+        git url: 'https://github.com/buhr3940/java-project.git', branch: 'master'
         sh 'ant -f test.xml -v'
     }
     stage ('Build') {
