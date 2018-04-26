@@ -9,7 +9,7 @@ node('linux') {
     }
     stage ('Deploy') {
 
-	    sh 'sudo aws s3 cp http://52.207.242.13:8080/build.xml/*.jar s3://buhr3940-pipeline-bucket/index.html'
+	    sh 'sudo aws s3 cp http://52.207.242.13:8080/build.xml s3://buhr3940-pipeline-bucket/index.html'
 	}
     stage ('Report') {
         junit 'reports/result.xml'   
