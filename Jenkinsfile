@@ -1,10 +1,7 @@
 properties([pipelineTriggers([githubPush()])])
-
-node('linux') {   
-	stage('Test') {    
-		sh 'ant -buildfile test.xml'   
-	}   
-	stage('Build') {    
-		sh 'ant'   
-	}   
+node('java') {
+    git url: 'https://github.com/buhr3940/java-projectd.git', branch: 'master'
+    stage('Test') {
+        sh "env"
+    }
 }
