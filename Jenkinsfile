@@ -12,6 +12,6 @@ node('linux') {
     }
     stage ('Report') {
         junit 'reports/result.xml'
-	sh 'aws cloudformation describe-stack-resources --region us-east-1 --vpc vpc-e2df9199 --security-group-ids sg-fbfbabb2 --stack-name jenkins'    
+	sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins'    
     }
 }
