@@ -4,4 +4,7 @@ node('java') {
     stage('Test') {
         sh "env"
     }
+    stage('Build') {    
+		sh 'ant'   
+	}   
 }
