@@ -11,6 +11,7 @@ node('linux') {
 	sh 'aws s3 cp $WORKSPACE/dist/*.jar s3://buhr3940-pipeline-bucket/index.html'
     }
     stage ('Report') {
-        junit 'reports/result.xml'   
+        junit 'reports/result.xml'
+	sh 'aws cloudformation describe-stack-resources --region us-east-1 --vpc-id vpc-e2df9199 --security-groupids sg-fbfbabb2 --stack-name jenkins'    
     }
 }
