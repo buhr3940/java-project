@@ -1,5 +1,5 @@
 properties([pipelineTriggers([githubPush()])])
-node('java-project') {
+node('java-project-pipeline') {
     git url: 'https://github.com/buhr3940/java-project.git', branch: 'master'
     stage('Test') {
 	    sh 'ant -f test.xml -v'
