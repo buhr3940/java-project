@@ -1,4 +1,4 @@
-//Assignment 10 - java-project pipeline
+//Assignment 10 code pipeline
 properties([pipelineTriggers([githubPush()])])
 node('linux') {
     git credentialsId: 'github-credential', url: 'https://github.com/buhr3940/java-project.git'
