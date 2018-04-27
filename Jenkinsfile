@@ -11,7 +11,9 @@ node('linux') {
 	sh 'aws s3 cp $WORKSPACE/dist/*.jar s3://buhr3940-pipeline-bucket/index.html'
     }
     stage ('Report') {
-        junit 'reports/result.xml'
-	sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins'    
-    }
+	withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '23f267e5-41c2-4622-b807-aaf5cc7dc4fe', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+    		sh 'aws cloudformation describe-stack-resources --region us-east-1 --stack-name jenkins'
+		}
+	junit 'reports/result.xml'
+	}
 }
