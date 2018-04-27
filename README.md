@@ -1,2 +1,2 @@
 # java-project pipeline
-This is assignment #10.
+This is a working version of assignment #10.
