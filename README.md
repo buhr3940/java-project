@@ -1,2 +1,2 @@
 # java-project pipeline
-This is assignment #10 code pipeline.
+This repo is assignment #10.
