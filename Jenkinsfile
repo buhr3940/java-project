@@ -8,7 +8,7 @@ node('linux') {
         sh 'ant -f build.xml -v'
     }
     stage ('Deploy') {
-	sh 'aws s3 cp $WORKSPACE/dist/*.jar s3://buhr3940-pipeline-bucket/index.html'
+	sh 'aws s3 cp $WORKSPACE/dist/*.jar s3://buhr3940-pipeline-bucket'
     }
     stage ('Report') {
 	withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '23f267e5-41c2-4622-b807-aaf5cc7dc4fe', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
